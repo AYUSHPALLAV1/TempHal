@@ -1,0 +1,33 @@
+llm:
+  model: gemini-3-flash-preview
+  mock: false
+  temperature_generation: 0.0
+  temperature_probing:    0.7
+  calls_per_minute:       15
+ 
+classifier:
+  model_path: outputs/classifier
+  max_length:  128
+ 
+paraphraser:
+  model: tuner007/pegasus_paraphrase
+  n_paraphrases: 7
+ 
+probing:
+  volatility_weight:  0.4
+  uncertainty_weight: 0.6
+  risk_threshold:     0.65
+ 
+retrieval:
+  primary_source:     wikipedia
+  fallback_source:    duckduckgo
+  min_evidence_words: 30
+  top_k:              3
+  ddg_sleep_seconds:  2.0
+ 
+db:
+  path: temphal.db
+ 
+demo:
+  cache_ttl_hours: 24
+  mode: demo
