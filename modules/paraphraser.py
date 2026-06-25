@@ -39,6 +39,7 @@ def paraphrase(text: str, n: int = 7) -> list[str]:
             num_beams=n,
             num_return_sequences=n,
             temperature=1.5,
+            do_sample=True,
             early_stopping=True
         )
     return [tok.decode(o, skip_special_tokens=True) for o in outputs]

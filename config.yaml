@@ -1,5 +1,5 @@
 llm:
-  model: gemini-3-flash-preview
+  model: models/gemini-3-flash-preview
   mock: false
   temperature_generation: 0.0
   temperature_probing:    0.7

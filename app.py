@@ -2,6 +2,7 @@ import gradio as gr
 import yaml
 import os
 import json
+import traceback
 from dotenv import load_dotenv
 from modules.db import DB
 from nlp_utils import extract_claims # Reusing nlp_utils for claim extraction
@@ -26,11 +27,7 @@ def call(prompt, temp=0.0):
     """Wrapper for safe_gemini_call."""
     return safe_gemini_call(gemini, prompt, temp)
 
-import traceback
 
-# ... existing code ...
-
-# 3. Core Pipeline Logic
 def run_pipeline(query: str):
     """
     Main entry point for the TempHal pipeline.
