@@ -148,16 +148,26 @@ with gr.Blocks(title='TempHal — Temporal Hallucination Attribution') as demo:
         btn = gr.Button('Analyze', variant='primary')
     
     raw_out = gr.Textbox(label='Raw Gemini response')
-    hl_out = gr.HighlightedText(
-        label='Claims by risk level',
-        color_map={'stable': 'green', 'volatile': 'orange', 'high_risk': 'red'}
-    )
+    
+    # HighlightedText: color_map was removed in Gradio 5 — use try/except for both versions
+    try:
+        hl_out = gr.HighlightedText(
+            label='Claims by risk level (green=stable, orange=volatile, red=high_risk)',
+            color_map={'stable': 'green', 'volatile': 'orange', 'uncertain': 'yellow', 'high_risk': 'red'}
+        )
+    except TypeError:
+        # Gradio 5+: color_map removed, colours are auto-assigned
+        hl_out = gr.HighlightedText(
+            label='Claims by risk level (stable / volatile / uncertain / high_risk)'
+        )
+
     df_out = gr.JSON(label='Claim scores')
     gr_out = gr.Textbox(label='Grounded response')
     
     gr.Examples(EXAMPLES, query_box)
     
     btn.click(run_pipeline, query_box, [raw_out, hl_out, df_out, gr_out])
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 7860))
