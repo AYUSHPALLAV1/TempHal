@@ -12,6 +12,10 @@ pinned: false
 
 # TempHal — Temporal Hallucination Attribution
 
+[![Live Demo](https://img.shields.io/badge/🤗%20HuggingFace-Live%20Demo-orange)](https://huggingface.co/spaces/ayushpallav1/TempHal)
+
+> 🚀 **Live Demo:** [https://huggingface.co/spaces/ayushpallav1/TempHal](https://huggingface.co/spaces/ayushpallav1/TempHal)
+
 A system that detects and grounds **temporal hallucinations** in LLM responses.
 
 ## What it does
