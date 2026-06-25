@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: temphal
+    runtime: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python -m spacy download en_core_web_sm
+    startCommand: python app.py
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false          # You set this manually in Render dashboard
+      - key: HF_TOKEN
+        sync: false          # Optional – speeds up HuggingFace downloads
+      - key: HF_HUB_DISABLE_SYMLINKS_WARNING
+        value: "1"
+      - key: PYTHONUNBUFFERED
+        value: "1"

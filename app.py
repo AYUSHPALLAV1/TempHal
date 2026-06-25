@@ -160,4 +160,6 @@ with gr.Blocks(title='TempHal — Temporal Hallucination Attribution') as demo:
     btn.click(run_pipeline, query_box, [raw_out, hl_out, df_out, gr_out])
 
 if __name__ == "__main__":
-    demo.launch(share=False)
+    port = int(os.environ.get("PORT", 7860))
+    demo.launch(server_name="0.0.0.0", server_port=port, share=False)
+
